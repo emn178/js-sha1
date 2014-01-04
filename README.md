@@ -1,7 +1,18 @@
 # js-sha1
 This is a simple SHA1 hash function for JavaScript supports UTF-8 encoding.
 
+## Install
+For node.js, you can use this command to install:
+
+    npm install js-sha1
+
 ## Usage
+If you use node.js, you should require the module first:
+
+    var sha1 = require('js-sha1');
+
+And you could use like this:
+
     sha1('Message to hash');
 
 ## Example
@@ -25,8 +36,10 @@ Output
 
     7be2d2d20c106eee0836c9bc2b939890a78e8fb3
 
-## Run Tests
+## Tests
 You can open `tests/index.html` in browser or use node.js to run `node tests/node-test.js` for test.
+
+You also could use `npm test` instance of `node tests/node-test.js`.
 
 ## Extensions
 ### jQuery
@@ -49,3 +62,7 @@ Code
 And then you could use like this:
 
     'message'.sha1();
+
+## Contact
+The project's website is located at https://github.com/emn178/js-sha1  
+Author: emn178@gmail.com

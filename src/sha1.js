@@ -1,4 +1,6 @@
-(function(window, undefined){
+(function(root, undefined){
+  'use strict';
+
   var HEX_CHARS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
   var HEX_TABLE = {
     '0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9,
@@ -6,7 +8,7 @@
     'A': 10, 'B': 11, 'C': 12, 'D': 13, 'E': 14, 'F': 15
   };
 
-  window.sha1 = function(message) {
+  var sha1 = function(message) {
     var blocks = hasUTF8(message) ? UTF8toBlocks(message) : ASCIItoBlocks(message);
     var h0 = 0x67452301;
     var h1 = 0xEFCDAB89;
@@ -146,4 +148,9 @@
     blocks[blockCount - 1] = bytes << 3; // bytes * 8
     return blocks;
   };
-}(window));
+
+  if(typeof(module) != 'undefined')
+    module.exports = sha1;
+  else if(root)
+    root.sha1 = sha1;
+}(this));
