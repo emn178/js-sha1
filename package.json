@@ -1,6 +1,6 @@
 {
   "name": "js-sha1",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A simple SHA1 hash function for JavaScript supports UTF-8 encoding.",
   "main": "src/sha1.js",
   "scripts": {
@@ -11,10 +11,13 @@
     "url": "https://github.com/emn178/js-sha1.git"
   },
   "keywords": [
+    "sha",
     "sha1",
-    "hash",
-    "encryption"
+    "encryption",
+    "cryptography",
+    "HMAC"
   ],
+  "license": "MIT",
   "author": "emn178 <emn178@gmail.com>",
   "homepage": "https://github.com/emn178/js-sha1",
   "bugs": {
