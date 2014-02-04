@@ -1,5 +1,5 @@
 # js-sha1
-This is a simple SHA1 hash function for JavaScript supports UTF-8 encoding.
+A simple SHA1 hash function for JavaScript supports UTF-8 encoding.
 
 ## Install
 For node.js, you can use this command to install:
