@@ -1,20 +1,49 @@
 # js-sha1
+[![Build Status](https://api.travis-ci.org/emn178/js-sha1.png)](https://travis-ci.org/emn178/js-sha1)
+[![Build Status](https://coveralls.io/repos/emn178/js-sha1/badge.png?branch=master)](https://coveralls.io/r/emn178/js-sha1?branch=master)  
+[![NPM](https://nodei.co/npm/js-sha1.png?stars&downloads)](https://nodei.co/npm/js-sha1/)  
 A simple SHA1 hash function for JavaScript supports UTF-8 encoding.
 
-## Install
+## Demo
+[SHA1 Online](http://emn178.github.io/online-tools/sha1.html)
+
+## Download
+[Compress](https://raw.github.com/emn178/js-sha1/master/build/sha1.min.js)  
+[Uncompress](https://raw.github.com/emn178/js-sha1/master/src/sha1.js)
+
+## Installation
+You can also install js-sha1 by using Bower.
+
+    bower install js-sha1
+
 For node.js, you can use this command to install:
 
     npm install js-sha1
 
 ## Usage
+You could use like this:
+```JavaScript
+sha1('Message to hash');
+```
 If you use node.js, you should require the module first:
 ```JavaScript
 sha1 = require('js-sha1');
 ```
-And you could use like this:
-```JavaScript
-sha1('Message to hash');
-```
+
+### Methods
+
+#### sha1(str, asciiOnly)
+
+Hash string to sha1, set asciiOnly to true for better performace if you ensure input is ascii.
+
+##### *str: `String`*
+
+String to hash.
+
+##### *asciiOnly: `Boolean` (default: `false`)*
+
+Specify the string encoding is ASCII.
+
 ## Example
 Code
 ```JavaScript
@@ -37,15 +66,6 @@ sha1('中文');
 Output
 
     7be2d2d20c106eee0836c9bc2b939890a78e8fb3
-
-## Tests
-You can open `tests/index.html` in browser or use node.js to run test
-
-    node tests/node-test.js
-
-or
-
-    npm test
 
 ## Extensions
 ### jQuery
