@@ -1,6 +1,6 @@
 # js-sha1
-[![Build Status](https://api.travis-ci.org/emn178/js-sha1.png)](https://travis-ci.org/emn178/js-sha1)
-[![Build Status](https://coveralls.io/repos/emn178/js-sha1/badge.png?branch=master)](https://coveralls.io/r/emn178/js-sha1?branch=master)  
+[![Build Status](https://travis-ci.org/emn178/js-sha1.svg?branch=master)](https://travis-ci.org/emn178/js-sha1)
+[![Coverage Status](https://coveralls.io/repos/emn178/js-sha1/badge.svg?branch=master)](https://coveralls.io/r/emn178/js-sha1?branch=master)  
 [![NPM](https://nodei.co/npm/js-sha1.png?stars&downloads)](https://nodei.co/npm/js-sha1/)  
 A simple SHA1 hash function for JavaScript supports UTF-8 encoding.
 
@@ -30,20 +30,6 @@ If you use node.js, you should require the module first:
 sha1 = require('js-sha1');
 ```
 
-### Methods
-
-#### sha1(str, asciiOnly)
-
-Hash string to sha1, set asciiOnly to true for better performace if you ensure input is ascii.
-
-##### *str: `String`*
-
-String to hash.
-
-##### *asciiOnly: `Boolean` (default: `false`)*
-
-Specify the string encoding is ASCII.
-
 ## Example
 Code
 ```JavaScript
@@ -67,13 +53,25 @@ Output
 
     7be2d2d20c106eee0836c9bc2b939890a78e8fb3
 
+It also supports byte Array or Uint8Array input:
+
+Code
+```JavaScript
+sha1([]);
+sha1(new Uint8Array([]));
+```
+Output
+
+    da39a3ee5e6b4b0d3255bfef95601890afd80709
+    da39a3ee5e6b4b0d3255bfef95601890afd80709
+
 ## Extensions
 ### jQuery
 If you prefer jQuery style, you can add following code to add a jQuery extension.
 
 Code
 ```JavaScript
-jQuery.sha1 = sha1
+jQuery.sha1 = sha1;
 ```
 And then you could use like this:
 ```JavaScript

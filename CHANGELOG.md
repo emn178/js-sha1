@@ -1,3 +1,10 @@
+# v0.2.0 / 2015-02-16
+
+* Support byte array input.
+* Remove ascii parameter.
+* Improve performance.
+* Add test cases.
+
 # v0.1.3 / 2015-01-07
 
 * Add bower package.
