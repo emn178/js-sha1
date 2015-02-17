@@ -65,6 +65,10 @@ Output
     da39a3ee5e6b4b0d3255bfef95601890afd80709
     da39a3ee5e6b4b0d3255bfef95601890afd80709
 
+## Benchmark
+[UTF8](http://jsperf.com/sha1-speed-test/11)  
+[ASCII](http://jsperf.com/sha1-speed-test/10)
+
 ## Extensions
 ### jQuery
 If you prefer jQuery style, you can add following code to add a jQuery extension.
