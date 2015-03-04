@@ -56,5 +56,12 @@
         expect(sha1(new Uint8Array([]))).to.be('da39a3ee5e6b4b0d3255bfef95601890afd80709');
       });
     });
+
+    describe('ArrayBuffer', function() {
+      it('should be successful', function() {
+        expect(sha1(new ArrayBuffer(0))).to.be('da39a3ee5e6b4b0d3255bfef95601890afd80709');
+        expect(sha1(new ArrayBuffer(1))).to.be('5ba93c9db0cff93f52b521d7420e43f6eda2784f');
+      });
+    });
   });
 })(sha1);

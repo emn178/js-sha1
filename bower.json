@@ -1,6 +1,6 @@
 {
   "name": "js-sha1",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "main": ["build/sha1.min.js"],
   "ignore": [
     "samples",

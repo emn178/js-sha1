@@ -1,5 +1,5 @@
 /*
- * js-sha1 v0.2.0
+ * js-sha1 v0.3.0
  * https://github.com/emn178/js-sha1
  *
  * Copyright 2014-2015, emn178@gmail.com
@@ -14,19 +14,18 @@
   if(NODE_JS) {
     root = global;
   }
-  var TYPED_ARRAY = typeof(Uint8Array) != 'undefined';
   var HEX_CHARS = '0123456789abcdef'.split('');
   var EXTRA = [-2147483648, 8388608, 32768, 128];
   var SHIFT = [24, 16, 8, 0];
 
   var blocks = [];
 
-  Array.prototype.__ARRAY__ = true;
-  if(TYPED_ARRAY) {
-    Uint8Array.prototype.__ARRAY__ = true;
-  }
-
   var sha1 = function(message) {
+    var notString = typeof(message) != 'string';
+    if(notString && message.constructor == ArrayBuffer) {
+      message = new Uint8Array(message);
+    }
+
     var h0, h1, h2, h3, h4, block = 0, code, end = false, t, f,
         i, j, index = 0, start = 0, bytes = 0, length = message.length;
 
@@ -42,7 +41,7 @@
       blocks[4] = blocks[5] = blocks[6] = blocks[7] =
       blocks[8] = blocks[9] = blocks[10] = blocks[11] =
       blocks[12] = blocks[13] = blocks[14] = blocks[15] = 0;
-      if(message.__ARRAY__) {
+      if(notString) {
         for (i = start;index < length && i < 64; ++index) {
           blocks[i >> 2] |= message[index] << SHIFT[i++ & 3];
         }
@@ -223,9 +222,19 @@
   };
 
   if(!root.JS_SHA1_TEST && typeof(module) != 'undefined') {
-    module.exports = sha1;
-  }
-  else if(root) {
+    var crypto = require('crypto');
+    var Buffer = require('buffer').Buffer;
+
+    module.exports = function(message) {
+      if(typeof(message) == 'string') {
+        return crypto.createHash('sha1').update(message, 'utf8').digest('hex');
+      }
+      if(message.constructor == ArrayBuffer) {
+        message = new Uint8Array(message);
+      }
+      return crypto.createHash('sha1').update(new Buffer(message)).digest('hex');
+    };
+  } else if(root) {
     root.sha1 = sha1;
   }
 }(this));

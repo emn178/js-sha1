@@ -53,7 +53,7 @@ Output
 
     7be2d2d20c106eee0836c9bc2b939890a78e8fb3
 
-It also supports byte Array or Uint8Array input:
+It also supports byte `Array`, `Uint8Array`, `ArrayBuffer` input:
 
 Code
 ```JavaScript
