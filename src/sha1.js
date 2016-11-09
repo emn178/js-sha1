@@ -10,7 +10,7 @@
 ;(function(root, undefined){
   'use strict';
 
-  var NODE_JS = typeof(module) != 'undefined';
+  var NODE_JS = typeof window === 'undefined';
   if(NODE_JS) {
     root = global;
   }
@@ -20,7 +20,13 @@
 
   var blocks = [];
 
-  var sha1 = function(message) {
+  /**
+   Returns an sha1 of message.
+
+   @digest - optional. Set true to return numeric array, set false to return a hex string. default=false
+  */
+  var sha1 = function(message, digest) {
+    digest = !!digest; // default of false
     var notString = typeof(message) != 'string';
     if(notString && message.constructor == ArrayBuffer) {
       message = new Uint8Array(message);
@@ -199,7 +205,8 @@
       h4 = h4 + e << 0;
     } while(!end);
 
-    return HEX_CHARS[(h0 >> 28) & 0x0F] + HEX_CHARS[(h0 >> 24) & 0x0F] +
+    if(!digest) {
+        return HEX_CHARS[(h0 >> 28) & 0x0F] + HEX_CHARS[(h0 >> 24) & 0x0F] +
            HEX_CHARS[(h0 >> 20) & 0x0F] + HEX_CHARS[(h0 >> 16) & 0x0F] +
            HEX_CHARS[(h0 >> 12) & 0x0F] + HEX_CHARS[(h0 >> 8) & 0x0F] +
            HEX_CHARS[(h0 >> 4) & 0x0F] + HEX_CHARS[h0 & 0x0F] +
@@ -219,9 +226,31 @@
            HEX_CHARS[(h4 >> 20) & 0x0F] + HEX_CHARS[(h4 >> 16) & 0x0F] +
            HEX_CHARS[(h4 >> 12) & 0x0F] + HEX_CHARS[(h4 >> 8) & 0x0F] +
            HEX_CHARS[(h4 >> 4) & 0x0F] + HEX_CHARS[h4 & 0x0F];
+       }
+
+       return [(h0 >> 24) & 0xFF,
+               (h0 >> 16) & 0xFF,
+               (h0 >> 8) & 0xFF,
+                h0 & 0xFF,
+               (h1 >> 24) & 0xFF,
+               (h1 >> 16) & 0xFF,
+               (h1 >> 8) & 0xFF,
+                h1 & 0xFF,
+               (h2 >> 24) & 0xFF,
+               (h2 >> 16) & 0xFF,
+               (h2 >> 8) & 0xFF,
+                h2 & 0xFF,
+               (h3 >> 24) & 0xFF,
+               (h3 >> 16) & 0xFF,
+               (h3 >> 8) & 0xFF,
+                h3 & 0xFF,
+               (h4 >> 24) & 0xFF,
+               (h4 >> 16) & 0xFF,
+               (h4 >> 8) & 0xFF,
+                h4 & 0xFF]
   };
 
-  if(!root.JS_SHA1_TEST && typeof(module) != 'undefined') {
+  if(!root.JS_SHA1_TEST && NODE_JS) {
     var crypto = require('crypto');
     var Buffer = require('buffer').Buffer;
 
