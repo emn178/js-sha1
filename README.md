@@ -24,79 +24,45 @@ For node.js, you can use this command to install:
 You could use like this:
 ```JavaScript
 sha1('Message to hash');
+var hash = sha1.create();
+hash.update('Message to hash');
+hash.hex();
 ```
 If you use node.js, you should require the module first:
 ```JavaScript
 sha1 = require('js-sha1');
 ```
+It supports AMD:
+```JavaScript
+require(['your/path/sha1.js'], function(sha1) {
+// ...
+});
+```
 
 ## Example
-Code
 ```JavaScript
-sha1('');
-sha1('The quick brown fox jumps over the lazy dog');
-sha1('The quick brown fox jumps over the lazy dog.');
+sha1(''); // da39a3ee5e6b4b0d3255bfef95601890afd80709
+sha1('The quick brown fox jumps over the lazy dog'); // 2fd4e1c67a2d28fced849ee1bb76e7391b93eb12
+sha1('The quick brown fox jumps over the lazy dog.'); // 408d94384216f890ff7a0c3528e8bed1e0b01621
+
+// It also supports UTF-8 encoding
+sha1('中文'); // 7be2d2d20c106eee0836c9bc2b939890a78e8fb3
+
+// It also supports byte `Array`, `Uint8Array`, `ArrayBuffer`
+sha1([]); // da39a3ee5e6b4b0d3255bfef95601890afd80709
+sha1(new Uint8Array([])); // da39a3ee5e6b4b0d3255bfef95601890afd80709
+
+// Different output
+sha1(''); // da39a3ee5e6b4b0d3255bfef95601890afd80709
+sha1.hex(''); // da39a3ee5e6b4b0d3255bfef95601890afd80709
+sha1.array(''); // [218, 57, 163, 238, 94, 107, 75, 13, 50, 85, 191, 239, 149, 96, 24, 144, 175, 216, 7, 9]
+sha1.digest(''); // [218, 57, 163, 238, 94, 107, 75, 13, 50, 85, 191, 239, 149, 96, 24, 144, 175, 216, 7, 9]
+sha1.arrayBuffer(''); // ArrayBuffer
 ```
-Output
 
-    da39a3ee5e6b4b0d3255bfef95601890afd80709
-    2fd4e1c67a2d28fced849ee1bb76e7391b93eb12
-    408d94384216f890ff7a0c3528e8bed1e0b01621
-
-It also supports UTF-8 encoding:
-
-Code
-```JavaScript
-sha1('中文');
-```
-Output
-
-    7be2d2d20c106eee0836c9bc2b939890a78e8fb3
-
-It also supports byte `Array`, `Uint8Array`, `ArrayBuffer` input:
-
-Code
-```JavaScript
-sha1([]);
-sha1(new Uint8Array([]));
-```
-Output
-
-    da39a3ee5e6b4b0d3255bfef95601890afd80709
-    da39a3ee5e6b4b0d3255bfef95601890afd80709
-
-## Benchmark
-[UTF8](http://jsperf.com/sha1-speed-test/11)  
-[ASCII](http://jsperf.com/sha1-speed-test/10)
-
-## Extensions
-### jQuery
-If you prefer jQuery style, you can add following code to add a jQuery extension.
-
-Code
-```JavaScript
-jQuery.sha1 = sha1;
-```
-And then you could use like this:
-```JavaScript
-$.sha1('message');
-```
-### Prototype
-If you prefer prototype style, you can add following code to add a prototype extension.
-
-Code
-```JavaScript
-String.prototype.sha1 = function() {
-  return sha1(this);
-};
-```
-And then you could use like this:
-```JavaScript
-'message'.sha1();
-```
 ## License
 The project is released under the [MIT license](http://www.opensource.org/licenses/MIT).
 
 ## Contact
 The project's website is located at https://github.com/emn178/js-sha1  
-Author: emn178@gmail.com
+Author: Chen, Yi-Cyuan (emn178@gmail.com)

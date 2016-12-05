@@ -1,30 +1,43 @@
-# v0.3.0 / 2015-03-04
+# Change Log
 
-* Support ArrayBuffer input.
-* Improve performance.
+## v0.4.0 / 2016-12-05
+### Added
+- update method.
+- support Array output.
+- support ArrayBuffer output.
+- support AMD.
 
-# v0.2.0 / 2015-02-16
+## v0.3.0 / 2015-03-04
+### Added
+- support ArrayBuffer input.
+### Changed
+- improve performance.
 
-* Support byte array input.
-* Remove ascii parameter.
-* Improve performance.
-* Add test cases.
+## v0.2.0 / 2015-02-16
+### Added
+- support byte array input.
+- test cases.
+### Removed
+- ascii parameter.
+### Changed
+- improve performance.
 
-# v0.1.3 / 2015-01-07
+## v0.1.3 / 2015-01-07
+### Added
+- bower package.
+- travis.
+- coveralls.
+### Fixed
+- JSHint warnings.
 
-* Add bower package.
-* Fixed JSHint warnings.
-* Add travis.
-* Add coveralls.
+## v0.1.2 / 2014-07-27
+### Fixed
+- accents bug.
 
-# v0.1.2 / 2014-07-27
+## v0.1.1 / 2014-01-05
+### Changed
+- update license.
 
- Fixed accents bug
-
-# v0.1.1 / 2014-01-05
-
-Update license
-
-# v0.1.0 / 2014-01-04
-
-Initial release
+## v0.1.0 / 2014-01-04
+### Added
+- initial release.
