@@ -1,5 +1,9 @@
 # Change Log
 
+## v0.4.1 / 2016-12-30
+### Fixed
+- ArrayBuffer dosen't work in Webpack.
+
 ## v0.4.0 / 2016-12-05
 ### Added
 - update method.

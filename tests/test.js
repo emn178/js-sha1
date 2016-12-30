@@ -1,8 +1,8 @@
-(function(sha1) {
+(function (sha1) {
   Array.prototype.toHexString = ArrayBuffer.prototype.toHexString = function () {
     var array = new Uint8Array(this);
     var hex = '';
-    for (var i = 0;i < array.length;++i) {
+    for (var i = 0; i < array.length; ++i) {
       var c = array[i].toString('16');
       hex += c.length == 1 ? '0' + c : c;
     }
@@ -49,7 +49,6 @@
       '5ba93c9db0cff93f52b521d7420e43f6eda2784f': new ArrayBuffer(1)
     },
     'Object': {
-      'da39a3ee5e6b4b0d3255bfef95601890afd80709': {},
       'da39a3ee5e6b4b0d3255bfef95601890afd80709': {what: 'ever'}
     }
   };
@@ -58,7 +57,7 @@
     testCases['Buffer'] = {
       'da39a3ee5e6b4b0d3255bfef95601890afd80709': new Buffer(0),
       '2fd4e1c67a2d28fced849ee1bb76e7391b93eb12': new Buffer(new Uint8Array([84, 104, 101, 32, 113, 117, 105, 99, 107, 32, 98, 114, 111, 119, 110, 32, 102, 111, 120, 32, 106, 117, 109, 112, 115, 32, 111, 118, 101, 114, 32, 116, 104, 101, 32, 108, 97, 122, 121, 32, 100, 111, 103]))
-    }
+    };
   }
 
   var methods = [

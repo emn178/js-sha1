@@ -1,20 +1,22 @@
 /*
  * [js-sha1]{@link https://github.com/emn178/js-sha1}
  *
- * @version 0.4.0
+ * @version 0.4.1
  * @author Chen, Yi-Cyuan [emn178@gmail.com]
  * @copyright Chen, Yi-Cyuan 2014-2016
  * @license MIT
  */
-(function(root) {
+/*jslint bitwise: true */
+(function() {
   'use strict';
 
-  var NODE_JS = typeof process == 'object' && process.versions && process.versions.node;
+  var root = typeof window === 'object' ? window : {};
+  var NODE_JS = !root.JS_SHA1_NO_NODE_JS && typeof process === 'object' && process.versions && process.versions.node;
   if (NODE_JS) {
     root = global;
   }
-  var COMMON_JS = !root.JS_SHA1_TEST && typeof module == 'object' && module.exports;
-  var AMD = typeof define == 'function' && define.amd;
+  var COMMON_JS = !root.JS_SHA1_NO_COMMON_JS && typeof module === 'object' && module.exports;
+  var AMD = typeof define === 'function' && define.amd;
   var HEX_CHARS = '0123456789abcdef'.split('');
   var EXTRA = [-2147483648, 8388608, 32768, 128];
   var SHIFT = [24, 16, 8, 0];
@@ -39,7 +41,7 @@
     method.update = function (message) {
       return method.create().update(message);
     };
-    for (var i = 0;i < OUTPUT_TYPES.length;++i) {
+    for (var i = 0; i < OUTPUT_TYPES.length; ++i) {
       var type = OUTPUT_TYPES[i];
       method[type] = createOutputMethod(type);
     }
@@ -47,21 +49,12 @@
   };
 
   var nodeWrap = function (method) {
-    var crypto, Buffer;
-    try {
-      if (root.JS_SHA1_TEST) {
-        throw 'JS_SHA1_TEST';
-      }
-      crypto = require('crypto');
-      Buffer = require('buffer').Buffer;
-    } catch (e) {
-      console.log(e);
-      return method;
-    }
+    var crypto = require('crypto');
+    var Buffer = require('buffer').Buffer;
     var nodeMethod = function (message) {
-      if (typeof message == 'string') {
+      if (typeof message === 'string') {
         return crypto.createHash('sha1').update(message, 'utf8').digest('hex');
-      } else if (message.constructor == ArrayBuffer) {
+      } else if (message.constructor === ArrayBuffer) {
         message = new Uint8Array(message);
       } else if (message.length === undefined) {
         return method(message);
@@ -97,8 +90,8 @@
     if (this.finalized) {
       return;
     }
-    var notString = typeof(message) != 'string';
-    if (notString && message.constructor == root.ArrayBuffer) {
+    var notString = typeof(message) !== 'string';
+    if (notString && message.constructor === root.ArrayBuffer) {
       message = new Uint8Array(message);
     }
     var code, index = 0, i, length = message.length || 0, blocks = this.blocks;
@@ -114,11 +107,11 @@
       }
 
       if(notString) {
-        for (i = this.start;index < length && i < 64; ++index) {
+        for (i = this.start; index < length && i < 64; ++index) {
           blocks[i >> 2] |= message[index] << SHIFT[i++ & 3];
         }
       } else {
-        for (i = this.start;index < length && i < 64; ++index) {
+        for (i = this.start; index < length && i < 64; ++index) {
           code = message.charCodeAt(index);
           if (code < 0x80) {
             blocks[i >> 2] |= code << SHIFT[i++ & 3];
@@ -180,12 +173,12 @@
     var a = this.h0, b = this.h1, c = this.h2, d = this.h3, e = this.h4;
     var f, j, t, blocks = this.blocks;
 
-    for(j = 16;j < 80;++j) {
+    for(j = 16; j < 80; ++j) {
       t = blocks[j - 3] ^ blocks[j - 8] ^ blocks[j - 14] ^ blocks[j - 16];
       blocks[j] =  (t << 1) | (t >>> 31);
     }
 
-    for(j = 0;j < 20;j += 5) {
+    for(j = 0; j < 20; j += 5) {
       f = (b & c) | ((~b) & d);
       t = (a << 5) | (a >>> 27);
       e = t + f + e + 1518500249 + blocks[j] << 0;
@@ -212,7 +205,7 @@
       c = (c << 30) | (c >>> 2);
     }
 
-    for(;j < 40;j += 5) {
+    for(; j < 40; j += 5) {
       f = b ^ c ^ d;
       t = (a << 5) | (a >>> 27);
       e = t + f + e + 1859775393 + blocks[j] << 0;
@@ -239,7 +232,7 @@
       c = (c << 30) | (c >>> 2);
     }
 
-    for(;j < 60;j += 5) {
+    for(; j < 60; j += 5) {
       f = (b & c) | (b & d) | (c & d);
       t = (a << 5) | (a >>> 27);
       e = t + f + e - 1894007588 + blocks[j] << 0;
@@ -266,7 +259,7 @@
       c = (c << 30) | (c >>> 2);
     }
 
-    for(;j < 80;j += 5) {
+    for(; j < 80; j += 5) {
       f = b ^ c ^ d;
       t = (a << 5) | (a >>> 27);
       e = t + f + e - 899497514 + blocks[j] << 0;
@@ -370,4 +363,4 @@
       });
     }
   }
-}(this));
+})();
