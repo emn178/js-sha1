@@ -1,9 +1,9 @@
 /*
  * [js-sha1]{@link https://github.com/emn178/js-sha1}
  *
- * @version 0.4.1
+ * @version 0.5.0
  * @author Chen, Yi-Cyuan [emn178@gmail.com]
- * @copyright Chen, Yi-Cyuan 2014-2016
+ * @copyright Chen, Yi-Cyuan 2014-2017
  * @license MIT
  */
 /*jslint bitwise: true */
@@ -81,7 +81,7 @@
     this.h3 = 0x10325476;
     this.h4 = 0xC3D2E1F0;
 
-    this.block = this.start = this.bytes = 0;
+    this.block = this.start = this.bytes = this.hBytes = 0;
     this.finalized = this.hashed = false;
     this.first = true;
   }
@@ -143,6 +143,10 @@
         this.start = i;
       }
     }
+    if (this.bytes > 4294967295) {
+      this.hBytes += this.bytes / 4294967296 << 0;
+      this.bytes = this.bytes % 4294967296;
+    }
     return this;
   };
 
@@ -165,6 +169,7 @@
       blocks[8] = blocks[9] = blocks[10] = blocks[11] =
       blocks[12] = blocks[13] = blocks[14] = blocks[15] = 0;
     }
+    blocks[14] = this.hBytes << 3 | this.bytes >> 29;
     blocks[15] = this.bytes << 3;
     this.hash();
   };
