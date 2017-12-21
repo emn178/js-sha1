@@ -1,7 +1,7 @@
 /*
  * [js-sha1]{@link https://github.com/emn178/js-sha1}
  *
- * @version 0.5.0
+ * @version 0.6.0
  * @author Chen, Yi-Cyuan [emn178@gmail.com]
  * @copyright Chen, Yi-Cyuan 2014-2017
  * @license MIT
@@ -49,8 +49,8 @@
   };
 
   var nodeWrap = function (method) {
-    var crypto = require('crypto');
-    var Buffer = require('buffer').Buffer;
+    var crypto = eval("require('crypto')");
+    var Buffer = eval("require('buffer').Buffer");
     var nodeMethod = function (message) {
       if (typeof message === 'string') {
         return crypto.createHash('sha1').update(message, 'utf8').digest('hex');
@@ -169,7 +169,7 @@
       blocks[8] = blocks[9] = blocks[10] = blocks[11] =
       blocks[12] = blocks[13] = blocks[14] = blocks[15] = 0;
     }
-    blocks[14] = this.hBytes << 3 | this.bytes >> 29;
+    blocks[14] = this.hBytes << 3 | this.bytes >>> 29;
     blocks[15] = this.bytes << 3;
     this.hash();
   };
