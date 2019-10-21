@@ -8,4 +8,4 @@ declare namespace sha1 {
     export function arrayBuffer(): ArrayBuffer;
 }
 
-export default sha1;
+export=sha1;
