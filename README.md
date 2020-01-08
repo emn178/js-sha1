@@ -1,14 +1,17 @@
+MyCrypto: This is a fork of **js-sha1**.
+The **eval()** function was removed due to security concerns.
+
 # js-sha1
 [![Build Status](https://travis-ci.org/emn178/js-sha1.svg?branch=master)](https://travis-ci.org/emn178/js-sha1)
-[![Coverage Status](https://coveralls.io/repos/emn178/js-sha1/badge.svg?branch=master)](https://coveralls.io/r/emn178/js-sha1?branch=master)  
-[![NPM](https://nodei.co/npm/js-sha1.png?stars&downloads)](https://nodei.co/npm/js-sha1/)  
+[![Coverage Status](https://coveralls.io/repos/emn178/js-sha1/badge.svg?branch=master)](https://coveralls.io/r/emn178/js-sha1?branch=master)
+[![NPM](https://nodei.co/npm/js-sha1.png?stars&downloads)](https://nodei.co/npm/js-sha1/)
 A simple SHA1 hash function for JavaScript supports UTF-8 encoding.
 
 ## Demo
 [SHA1 Online](http://emn178.github.io/online-tools/sha1.html)
 
 ## Download
-[Compress](https://raw.github.com/emn178/js-sha1/master/build/sha1.min.js)  
+[Compress](https://raw.github.com/emn178/js-sha1/master/build/sha1.min.js)
 [Uncompress](https://raw.github.com/emn178/js-sha1/master/src/sha1.js)
 
 ## Installation
@@ -64,5 +67,5 @@ sha1.arrayBuffer(''); // ArrayBuffer
 The project is released under the [MIT license](http://www.opensource.org/licenses/MIT).
 
 ## Contact
-The project's website is located at https://github.com/emn178/js-sha1  
+The project's website is located at https://github.com/emn178/js-sha1
 Author: Chen, Yi-Cyuan (emn178@gmail.com)
