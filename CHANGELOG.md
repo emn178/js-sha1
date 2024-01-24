@@ -1,5 +1,23 @@
 # Change Log
 
+## v0.7.0 / 2024-01-24
+### Added
+- TypeScript interfaces. #6, #9
+- HMAC feature.
+- support for web worker. #14
+
+### Fixed
+- deprecated `new Buffer`, replace with `Buffer.from`. #10
+- dependencies and security issues.
+- refactor: simplify formatMessage internal logic.
+- Generates incorrect hash in some cases.
+
+### Changed
+- remove `eval` and use `require` directly. #8
+- throw error by Error oject.
+- throw error if update after finalize
+- use unsigned right shift.
+
 ## v0.6.0 / 2017-12-21
 ### Fixed
 - incorrect result when first bit is 1 of bytes.

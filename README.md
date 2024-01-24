@@ -6,6 +6,7 @@ A simple SHA1 hash function for JavaScript supports UTF-8 encoding.
 
 ## Demo
 [SHA1 Online](http://emn178.github.io/online-tools/sha1.html)
+[SHA1 File Checksum Online](https://emn178.github.io/online-tools/sha1_checksum.html)
 
 ## Download
 [Compress](https://raw.github.com/emn178/js-sha1/master/build/sha1.min.js)  
@@ -20,6 +21,9 @@ For node.js, you can use this command to install:
 
     npm install js-sha1
 
+## Notice
+NIST formally deprecated use of SHA-1 in 2011 and disallowed its use for digital signatures in 2013, and declared that it should be phased out by 2030. However, SHA-1 is still secure for HMAC. [wiki](https://en.wikipedia.org/wiki/SHA-1)
+
 ## Usage
 You could use like this:
 ```JavaScript
@@ -27,11 +31,28 @@ sha1('Message to hash');
 var hash = sha1.create();
 hash.update('Message to hash');
 hash.hex();
+
+// HMAC
+sha1.hmac('key', 'Message to hash');
+
+var hash = sha1.hmac.create('key');
+hash.update('Message to hash');
+hash.hex();
 ```
+
+### Node.js
 If you use node.js, you should require the module first:
 ```JavaScript
-sha1 = require('js-sha1');
+var sha1 = require('js-sha1');
 ```
+
+### TypeScript
+If you use TypeScript, you can import like this:
+```TypeScript
+import { sha1 } from 'js-sha1';
+```
+
+## RequireJS
 It supports AMD:
 ```JavaScript
 require(['your/path/sha1.js'], function(sha1) {
@@ -58,6 +79,11 @@ sha1.hex(''); // da39a3ee5e6b4b0d3255bfef95601890afd80709
 sha1.array(''); // [218, 57, 163, 238, 94, 107, 75, 13, 50, 85, 191, 239, 149, 96, 24, 144, 175, 216, 7, 9]
 sha1.digest(''); // [218, 57, 163, 238, 94, 107, 75, 13, 50, 85, 191, 239, 149, 96, 24, 144, 175, 216, 7, 9]
 sha1.arrayBuffer(''); // ArrayBuffer
+
+// HMAC
+sha1.hmac.hex('key', 'Message to hash');
+sha1.hmac.array('key', 'Message to hash');
+// ...
 ```
 
 ## License

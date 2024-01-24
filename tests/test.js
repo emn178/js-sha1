@@ -21,7 +21,8 @@
     'UTF8': {
       '7be2d2d20c106eee0836c9bc2b939890a78e8fb3': '中文',
       '9e4e5d978deced901d621475b03f1ded19e945bf': 'aécio',
-      '4667688a63420661469c8dbc0f871770349bab08': '𠜎'
+      '4667688a63420661469c8dbc0f871770349bab08': '𠜎',
+      '20cc8fef058da244b90ed814ab1b6d9d5b4796bf': 'Tehtäväsi on muotoilla teksti, jossa käyttäjälle suositellaan hänen henkilökohtaisiin tietoihinsa perustuen avioehdon tekemistä. Suosittelemme nimenomaan tätä tuotetta käyttäjän henkilökohtaisista tiedoista johtuen. Tuottamasi tekstin tulee olla lyhyt, persoonallinen, ymmärrettävä ja todenmukainen. Suositus perustuu seuraaviin seikkoihin:\n\nSeikka 0: Avioehdon tekeminen on verohyötyjen vuoksi suositeltavaa, koska olet ilmaissut että haluat kuoleman tapauksessa turvata ensisijaisesti aviopuolisosi asemaa (ennemmin kuin lasten asemaa). Avioehdolla voit määrätä, että puolet kuolleen puolison omaisuudesta siirtyy verovapaasti leskelle.\n\nVoit halutessasi hyödyntää seuraavia tietoja tekstin muotoilussa persoonallisemmaksi: Käyttäjällä on kumppani nimeltä PARTNER_NAME. Käyttäjällä on suurperhe. Käyttäjällä on lapsiperhe.\n\nPuhuttele käyttäjää siihen sävyyn että tiedät jo mitä käyttäjä haluaa, koska hän on kertonut toiveistaan, ja niiden perusteella tehty suositus on ilmiselvä. Joten älä käytä epävarmoja ilmaisuja kuten "halutessasi", vaan kirjoita itsevarmoilla ilmaisuilla kuten "koska haluat". Älä tee oletuksia käyttäjän sukupuolesta, emme tiedä onko hän mies vai nainen. Älä käytä sanaa jälkikasvu, puhu ennemmin lapsesta tai lapsista riippuen onko lapsia yksi vai useampia. Älä puhuttele käyttäjää ensimmäisessä persoonassa, käytä ennemmin passiivimuotoa. Tekstin sävyn tulisi olla neutraalin asiallinen, ei melodramaattinen eikä leikkisä. Pysy totuudessa, älä keksi uusia seikkoja yllä listattujen lisäksi. Viittaa ihmisiin nimillä silloin kun se on mahdollista. Tekstin tulisi olla vain muutaman lauseen mittainen. Älä siis kirjoita pitkiä selityksiä äläkä kirjoita listoja. Tiivistä oleellinen tieto lyhyeksi ja persoonalliseksi tekstiksi.'
     },
     'UTF8 more than 64 bytes': {
       'ad8aae581c915fe01c4964a5e8b322cae74ee5c5': '訊息摘要演算法第五版（英語：Message-Digest Algorithm 5，縮寫為MD5），是當前電腦領域用於確保資訊傳輸完整一致而廣泛使用的雜湊演算法之一',
@@ -38,27 +39,29 @@
       'da39a3ee5e6b4b0d3255bfef95601890afd80709': [],
       '2fd4e1c67a2d28fced849ee1bb76e7391b93eb12': [84, 104, 101, 32, 113, 117, 105, 99, 107, 32, 98, 114, 111, 119, 110, 32, 102, 111, 120, 32, 106, 117, 109, 112, 115, 32, 111, 118, 101, 114, 32, 116, 104, 101, 32, 108, 97, 122, 121, 32, 100, 111, 103],
       '55a13698cdc010c0d16dab2f7dc10f43a713f12f': [48, 49, 50, 51, 52, 53, 54, 55, 56, 48, 49, 50, 51, 52, 53, 54, 55, 56, 48, 49, 50, 51, 52, 53, 54, 55, 56, 48, 49, 50, 51, 52, 53, 54, 55, 56, 48, 49, 50, 51, 52, 53, 54, 55, 56, 48, 49, 50, 51, 52, 53, 54, 55, 56, 48, 49, 50, 51, 52, 53, 54, 55, 56, 48, 49, 50, 51, 52, 53, 54, 55]
-    },
-    'Uint8Array': {
-      '2fd4e1c67a2d28fced849ee1bb76e7391b93eb12': new Uint8Array([84, 104, 101, 32, 113, 117, 105, 99, 107, 32, 98, 114, 111, 119, 110, 32, 102, 111, 120, 32, 106, 117, 109, 112, 115, 32, 111, 118, 101, 114, 32, 116, 104, 101, 32, 108, 97, 122, 121, 32, 100, 111, 103])
-    },
-    'Int8Array': {
-      '2fd4e1c67a2d28fced849ee1bb76e7391b93eb12': new Int8Array([84, 104, 101, 32, 113, 117, 105, 99, 107, 32, 98, 114, 111, 119, 110, 32, 102, 111, 120, 32, 106, 117, 109, 112, 115, 32, 111, 118, 101, 114, 32, 116, 104, 101, 32, 108, 97, 122, 121, 32, 100, 111, 103])
-    },
-    'ArrayBuffer': {
-      '5ba93c9db0cff93f52b521d7420e43f6eda2784f': new ArrayBuffer(1)
-    },
-    'Object': {
-      'da39a3ee5e6b4b0d3255bfef95601890afd80709': {what: 'ever'}
     }
   };
 
-  if (typeof process == 'object') {
-    testCases['Buffer'] = {
-      'da39a3ee5e6b4b0d3255bfef95601890afd80709': new Buffer(0),
-      '2fd4e1c67a2d28fced849ee1bb76e7391b93eb12': new Buffer(new Uint8Array([84, 104, 101, 32, 113, 117, 105, 99, 107, 32, 98, 114, 111, 119, 110, 32, 102, 111, 120, 32, 106, 117, 109, 112, 115, 32, 111, 118, 101, 114, 32, 116, 104, 101, 32, 108, 97, 122, 121, 32, 100, 111, 103]))
+  if (!(typeof JS_SHA1_NO_ARRAY_BUFFER === 'boolean' && JS_SHA1_NO_ARRAY_BUFFER)) {
+    testCases['Uint8Array'] = {
+      '2fd4e1c67a2d28fced849ee1bb76e7391b93eb12': new Uint8Array([84, 104, 101, 32, 113, 117, 105, 99, 107, 32, 98, 114, 111, 119, 110, 32, 102, 111, 120, 32, 106, 117, 109, 112, 115, 32, 111, 118, 101, 114, 32, 116, 104, 101, 32, 108, 97, 122, 121, 32, 100, 111, 103])
+    };
+    testCases['Int8Array'] = {
+      '2fd4e1c67a2d28fced849ee1bb76e7391b93eb12': new Int8Array([84, 104, 101, 32, 113, 117, 105, 99, 107, 32, 98, 114, 111, 119, 110, 32, 102, 111, 120, 32, 106, 117, 109, 112, 115, 32, 111, 118, 101, 114, 32, 116, 104, 101, 32, 108, 97, 122, 121, 32, 100, 111, 103])
+    };
+    testCases['ArrayBuffer'] = {
+      '5ba93c9db0cff93f52b521d7420e43f6eda2784f': new ArrayBuffer(1)
     };
   }
+
+  if (typeof BUFFER === 'boolean' && BUFFER) {
+    testCases['Buffer'] = {
+      'da39a3ee5e6b4b0d3255bfef95601890afd80709': Buffer.from([]),
+      '2fd4e1c67a2d28fced849ee1bb76e7391b93eb12': Buffer.from(new Uint8Array([84, 104, 101, 32, 113, 117, 105, 99, 107, 32, 98, 114, 111, 119, 110, 32, 102, 111, 120, 32, 106, 117, 109, 112, 115, 32, 111, 118, 101, 114, 32, 116, 104, 101, 32, 108, 97, 122, 121, 32, 100, 111, 103]))
+    }
+  }
+
+  var errorTestCases = [null, undefined, { length: 0 }, 0, 1, false, true, NaN, Infinity, function () {}];
 
   var methods = [
     {
@@ -131,32 +134,31 @@
       call: function (message) {
         var hash = sha1.update(message);
         hash.hex();
-        hash.update(message);
         return hash.hex();
       }
     }
   ];
 
-  methods.forEach(function (method) {
-    describe('#' + method.name, function () {
-      for (var testCaseName in testCases) {
-        (function (testCaseName) {
-          var testCase = testCases[testCaseName];
-          context('when ' + testCaseName, function () {
-            for (var hash in testCase) {
-              (function (message, hash) {
-                it('should be equal', function () {
-                  expect(method.call(message)).to.be(hash);
-                });
-              })(testCase[hash], hash);
-            }
-          });
-        })(testCaseName);
-      }
+  describe('sha1', function () {
+    methods.forEach(function (method) {
+      describe('#' + method.name, function () {
+        for (var testCaseName in testCases) {
+          (function (testCaseName) {
+            var testCase = testCases[testCaseName];
+            context('when ' + testCaseName, function () {
+              for (var hash in testCase) {
+                (function (message, hash) {
+                  it('should be equal', function () {
+                    expect(method.call(message)).to.be(hash);
+                  });
+                })(testCase[hash], hash);
+              }
+            });
+          })(testCaseName);
+        }
+      });
     });
-  });
 
-  describe('Sha1', function () {
     classMethods.forEach(function (method) {
       describe('#' + method.name, function () {
         for (var testCaseName in testCases) {
@@ -173,6 +175,28 @@
             });
           })(testCaseName);
         }
+      });
+    });
+  });
+
+  describe('#sha1', function () {
+    errorTestCases.forEach(function (testCase) {
+      context('when ' + testCase, function () {
+        it('should throw error', function () {
+          expect(function () {
+            sha1(testCase);
+          }).to.throwError(/input is invalid type/);
+        });
+      });
+    });
+
+    context('when update after finalize', function () {
+      it('should throw error', function () {
+        expect(function () {
+          var hash = sha1.update('any');
+          hash.hex();
+          hash.update('any');
+        }).to.throwError(/finalize already called/);
       });
     });
 

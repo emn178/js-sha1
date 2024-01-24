@@ -1,6 +1,6 @@
 {
   "name": "js-sha1",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "A simple SHA1 hash function for JavaScript supports UTF-8 encoding.",
   "main": "src/sha1.js",
   "devDependencies": {
@@ -8,6 +8,7 @@
     "mocha": "~10.2.0",
     "nyc": "^15.1.0",
     "requirejs": "^2.1.22",
+    "tiny-worker": "^2.3.0",
     "uglify-js": "^3.1.9"
   },
   "scripts": {
@@ -37,5 +38,9 @@
     "exclude": [
       "tests"
     ]
+  },
+  "browser": {
+    "crypto": false,
+    "buffer": false
   }
 }
