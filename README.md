@@ -110,8 +110,8 @@ sha1.hmac.array('key', 'Message to hash');
 - [Benchmark (measurethat.net) - Short String](https://measurethat.net/Benchmarks/Show/36035/0/sha1-performance-comparison---short-string)
 - [Benchmark (measurethat.net) - Long String](https://measurethat.net/Benchmarks/Show/36036/0/sha1-performance-comparison---long-string)
 - [Benchmark (measurethat.net) - Very Long String](https://measurethat.net/Benchmarks/Show/36037/0/sha1-performance-comparison---very-long-string)
-- [Async Benchmark (measurethat.net) - Short String](https://measurethat.net/Benchmarks/Show/36039/0/sha1-performance-comparison---async-short-string)
-- [Async Benchmark (measurethat.net) - Very Long String](https://measurethat.net/Benchmarks/Show/36038/0/sha1-performance-comparison---async-very-long-string)
+- [Async Benchmark (measurethat.net) - Short String](https://measurethat.net/Benchmarks/Show/36040/0/sha1-performance-comparison---async-short-string-v2)
+- [Async Benchmark (measurethat.net) - Very Long String](https://measurethat.net/Benchmarks/Show/36041/0/sha1-performance-comparison---async-very-long-string-v2)
 
 js-sha1 is a small, synchronous, pure JavaScript implementation with correct UTF-8 handling. For large data, WebAssembly-based libraries (e.g. Hash-WASM) or the asynchronous Web Crypto API are faster.
 
