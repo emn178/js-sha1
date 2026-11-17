@@ -28,6 +28,12 @@
       'ad8aae581c915fe01c4964a5e8b322cae74ee5c5': '訊息摘要演算法第五版（英語：Message-Digest Algorithm 5，縮寫為MD5），是當前電腦領域用於確保資訊傳輸完整一致而廣泛使用的雜湊演算法之一',
       '3a15ad3ce9efdd4bf982eaaaecdeda36a887a3f9': '訊息摘要演算法第五版（英語：Message-Digest Algorithm 5，縮寫為MD5），是當前電腦領域用於確保資訊傳輸完整一致而廣泛使用的雜湊演算法之一（又譯雜湊演算法、摘要演算法等），主流程式語言普遍已有MD5的實作。'
     },
+    'UTF8 unpaired surrogates': {
+      '9bdb77276c1852e1fb067820472812fcf6084024': '\ud800',
+      'c3693aea616c886c93746deab3d42921ca20f04e': 'a\ud83db',
+      'dd5098b85f2b1fe5179188703409f3bcef8ef82e': '\ud83d\ud83d\ude00\udfff',
+      '4c40ec6d4181034dc5130d01ebf4aea4d7e87f13': Array(63).join('a') + '\ud800b'
+    },
     'special length': {
       '4cdeae78e8b7285aef73e0a15eec7d5b30f3f3e3': '0123456780123456780123456780123456780123456780123456780',
       'e657e6bb6b5d0c2bf7e929451c14a5302589a60b': '01234567801234567801234567801234567801234567801234567801',
@@ -187,6 +193,13 @@
             sha1(testCase);
           }).to.throwError(/input is invalid type/);
         });
+      });
+    });
+
+    context('when a surrogate pair is split across updates', function () {
+      it('should encode each unpaired half as U+FFFD', function () {
+        expect(sha1.update('a\ud83d').update('\ude00b').hex()).to.be('0d202f075aad3e6c714389bf818e2877cc537c85');
+        expect(sha1.update('a\ud83d').update('b').hex()).to.be('c3693aea616c886c93746deab3d42921ca20f04e');
       });
     });
 

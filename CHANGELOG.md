@@ -1,5 +1,17 @@
 # Change Log
 
+## v0.8.0 / 2026-11-17
+### Added
+- ESM builds and package `exports`.
+
+### Fixed
+- Incorrect hash for strings with unpaired UTF-16 surrogates; they are now encoded as U+FFFD, the same as `TextEncoder`.
+- Detect browsers with a `process` polyfill (e.g. BrowserFS) and Electron renderers as non-Node.js environments.
+
+### Changed
+- Replace Travis CI with GitHub Actions.
+- Update dev dependencies and fix security issues.
+
 ## v0.7.0 / 2024-01-24
 ### Added
 - TypeScript interfaces. #6, #9

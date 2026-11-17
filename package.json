@@ -1,21 +1,46 @@
 {
   "name": "js-sha1",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "A simple SHA1 hash function for JavaScript supports UTF-8 encoding.",
   "main": "src/sha1.js",
+  "module": "build/sha1.mjs",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "node": {
+        "import": "./build/sha1.node.mjs",
+        "require": "./src/sha1.js"
+      },
+      "import": "./build/sha1.mjs",
+      "require": "./src/sha1.js",
+      "default": "./src/sha1.js"
+    },
+    "./src/sha1.js": "./src/sha1.js",
+    "./build/sha1.min.js": "./build/sha1.min.js",
+    "./build/sha1.mjs": "./build/sha1.mjs",
+    "./build/sha1.min.mjs": "./build/sha1.min.mjs",
+    "./build/sha1.node.mjs": "./build/sha1.node.mjs",
+    "./package.json": "./package.json"
+  },
+  "types": "./index.d.ts",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^29.0.3",
+    "@rollup/plugin-terser": "^1.0.2",
     "expect.js": "~0.3.1",
-    "mocha": "~10.2.0",
-    "nyc": "^15.1.0",
-    "requirejs": "^2.1.22",
+    "mocha": "^12.0.3",
+    "nyc": "^18.0.0",
+    "requirejs": "^2.3.8",
+    "rollup": "^4.65.0",
     "tiny-worker": "^2.3.0",
-    "uglify-js": "^3.1.9"
+    "uglify-js": "^3.19.3"
   },
   "scripts": {
-    "test": "nyc mocha tests/node-test.js",
-    "report": "nyc --reporter=html --reporter=text mocha tests/node-test.js",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "build": "uglifyjs src/sha1.js -c -m eval --comments -o build/sha1.min.js"
+    "test": "npm run build && npm run test:coverage",
+    "test:runtime": "mocha tests/node-test.js && mocha tests/esm-test.mjs",
+    "test:coverage": "nyc --reporter=text --reporter=html --reporter=lcov npm run test:runtime",
+    "report": "nyc --reporter=html --reporter=text npm run test:runtime",
+    "build": "rollup -c && uglifyjs src/sha1.js -c -m eval --comments -o build/sha1.min.js",
+    "prepack": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -42,5 +67,9 @@
   "browser": {
     "crypto": false,
     "buffer": false
+  },
+  "overrides": {
+    "glob": "^14.0.2",
+    "minimatch": "^11.0.1"
   }
 }

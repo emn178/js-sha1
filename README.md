@@ -1,11 +1,13 @@
 # js-sha1
-[![Build Status](https://travis-ci.org/emn178/js-sha1.svg?branch=master)](https://travis-ci.org/emn178/js-sha1)
-[![Coverage Status](https://coveralls.io/repos/emn178/js-sha1/badge.svg?branch=master)](https://coveralls.io/r/emn178/js-sha1?branch=master)  
-[![NPM](https://nodei.co/npm/js-sha1.png?stars&downloads)](https://nodei.co/npm/js-sha1/)  
+[![CI](https://github.com/emn178/js-sha1/actions/workflows/ci.yml/badge.svg)](https://github.com/emn178/js-sha1/actions/workflows/ci.yml)
+[![Coverage Status](https://coveralls.io/repos/emn178/js-sha1/badge.svg?branch=master)](https://coveralls.io/r/emn178/js-sha1?branch=master)
+[![NPM](https://img.shields.io/npm/v/js-sha1)](https://www.npmjs.com/package/js-sha1)
+[![CDNJS](https://img.shields.io/jsdelivr/npm/hm/js-sha1)](https://www.jsdelivr.com/package/npm/js-sha1)
+
 A simple SHA1 hash function for JavaScript supports UTF-8 encoding.
 
 ## Demo
-[SHA1 Online](http://emn178.github.io/online-tools/sha1.html)
+[SHA1 Online](https://emn178.github.io/online-tools/sha1.html)  
 [SHA1 File Checksum Online](https://emn178.github.io/online-tools/sha1_checksum.html)
 
 ## Download
@@ -46,6 +48,21 @@ If you use node.js, you should require the module first:
 var sha1 = require('js-sha1');
 ```
 
+### ESM
+If you use node.js ESM or a bundler, you can import like this:
+```JavaScript
+import { sha1 } from 'js-sha1';
+// or
+import sha1 from 'js-sha1';
+```
+
+In browsers, you can import the ESM build directly:
+```HTML
+<script type="module">
+  import { sha1 } from 'https://cdn.jsdelivr.net/npm/js-sha1/build/sha1.min.mjs';
+</script>
+```
+
 ### TypeScript
 If you use TypeScript, you can import like this:
 ```TypeScript
@@ -68,6 +85,9 @@ sha1('The quick brown fox jumps over the lazy dog.'); // 408d94384216f890ff7a0c3
 
 // It also supports UTF-8 encoding
 sha1('中文'); // 7be2d2d20c106eee0836c9bc2b939890a78e8fb3
+
+// Unpaired surrogates are encoded as U+FFFD, the same as TextEncoder
+sha1('\ud800'); // 9bdb77276c1852e1fb067820472812fcf6084024
 
 // It also supports byte `Array`, `Uint8Array`, `ArrayBuffer`
 sha1([]); // da39a3ee5e6b4b0d3255bfef95601890afd80709
