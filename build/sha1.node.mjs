@@ -12,7 +12,7 @@ var sha1$1 = {exports: {}};
 /*
  * [js-sha1]{@link https://github.com/emn178/js-sha1}
  *
- * @version 0.8.0
+ * @version 0.9.0
  * @author Chen, Yi-Cyuan [emn178@gmail.com]
  * @copyright Chen, Yi-Cyuan 2014-2026
  * @license MIT
@@ -52,7 +52,7 @@ var sha1$1 = {exports: {}};
 	    };
 	  }
 
-	  var isView = ArrayBuffer.isView;
+	  var isView = ARRAY_BUFFER ? ArrayBuffer.isView : null;
 	  if (ARRAY_BUFFER && (root.JS_SHA1_NO_ARRAY_BUFFER_IS_VIEW || !isView)) {
 	    isView = function (obj) {
 	      return typeof obj === 'object' && obj.buffer && obj.buffer.constructor === ArrayBuffer;
@@ -71,10 +71,14 @@ var sha1$1 = {exports: {}};
 	    if (ARRAY_BUFFER && message.constructor === ArrayBuffer) {
 	      return [new Uint8Array(message), false];
 	    }
-	    if (!isArray(message) && !isView(message)) {
+	    if (isArray(message)) {
+	      return [message, false];
+	    }
+	    if (!ARRAY_BUFFER || !isView(message)) {
 	      throw new Error(INPUT_ERROR);
 	    }
-	    return [message, false];
+	    // read the underlying bytes of any view (Int8Array, DataView, Uint16Array, ...)
+	    return [new Uint8Array(message.buffer, message.byteOffset, message.byteLength), false];
 	  };
 
 	  var createOutputMethod = function (outputType) {
@@ -120,6 +124,8 @@ var sha1$1 = {exports: {}};
 	          throw new Error(INPUT_ERROR);
 	        } else if (message.constructor === ArrayBuffer) {
 	          message = new Uint8Array(message);
+	        } else if (ARRAY_BUFFER && isView(message) && message.constructor !== Buffer) {
+	          message = new Uint8Array(message.buffer, message.byteOffset, message.byteLength);
 	        }
 	      }
 	      if (isArray(message) || isView(message) ||

@@ -1,5 +1,13 @@
 # Change Log
 
+## v0.9.0 / 2026-11-18
+### Fixed
+- Incorrect hash for `DataView` input, and for `Int8Array` with negative values in browsers.
+- Throws `ArrayBuffer is not defined` in browsers without `ArrayBuffer`.
+
+### Changed
+- Multi-byte typed arrays such as `Uint16Array`, `Uint32Array` and `Float32Array` are now hashed by their underlying bytes, the same as Node.js `crypto` and Web Crypto. Previously each element was treated as one byte.
+
 ## v0.8.0 / 2026-11-17
 ### Added
 - ESM builds and package `exports`.

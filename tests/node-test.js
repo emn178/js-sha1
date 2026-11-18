@@ -92,8 +92,12 @@ describe('environment detection', function () {
   var path = require('path');
   var source = fs.readFileSync(path.join(__dirname, '../src/sha1.js'), 'utf8');
 
-  function run(sandbox) {
-    vm.runInContext(source, vm.createContext(sandbox));
+  function run(sandbox, script) {
+    var context = vm.createContext(sandbox);
+    if (script) {
+      vm.runInContext(script, context);
+    }
+    vm.runInContext(source, context);
     return sandbox.sha1;
   }
 
@@ -119,6 +123,12 @@ describe('environment detection', function () {
     var sandbox = {};
     sandbox.self = sandbox;
     check(run(sandbox));
+  });
+
+  it('should load in a browser without ArrayBuffer', function () {
+    var sandbox = {};
+    sandbox.window = sandbox;
+    check(run(sandbox, 'delete ArrayBuffer; delete Uint8Array; delete DataView;'));
   });
 });
 

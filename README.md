@@ -89,7 +89,7 @@ sha1('中文'); // 7be2d2d20c106eee0836c9bc2b939890a78e8fb3
 // Unpaired surrogates are encoded as U+FFFD, the same as TextEncoder
 sha1('\ud800'); // 9bdb77276c1852e1fb067820472812fcf6084024
 
-// It also supports byte `Array`, `Uint8Array`, `ArrayBuffer`
+// It also supports byte `Array`, `Uint8Array`, `ArrayBuffer` and other `ArrayBuffer` views (their underlying bytes are hashed)
 sha1([]); // da39a3ee5e6b4b0d3255bfef95601890afd80709
 sha1(new Uint8Array([])); // da39a3ee5e6b4b0d3255bfef95601890afd80709
 

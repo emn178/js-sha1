@@ -55,6 +55,11 @@
     testCases['Int8Array'] = {
       '2fd4e1c67a2d28fced849ee1bb76e7391b93eb12': new Int8Array([84, 104, 101, 32, 113, 117, 105, 99, 107, 32, 98, 114, 111, 119, 110, 32, 102, 111, 120, 32, 106, 117, 109, 112, 115, 32, 111, 118, 101, 114, 32, 116, 104, 101, 32, 108, 97, 122, 121, 32, 100, 111, 103])
     };
+    testCases['ArrayBuffer view'] = {
+      'd078b824154163b1b6cc79e35aa7954c06201354': new Int8Array([-1, -128, 65, 0, -2]),
+      'c92920944247d80c842eaa65fd01efec1c84c342': new Uint16Array(new Uint8Array([2, 1]).buffer),
+      'c65f99f8c5376adadddc46d5cbcf5762f9e55eb7': new DataView(new Uint8Array([9, 72, 69, 76, 76, 79, 9]).buffer, 1, 5)
+    };
     testCases['ArrayBuffer'] = {
       '5ba93c9db0cff93f52b521d7420e43f6eda2784f': new ArrayBuffer(1)
     };
